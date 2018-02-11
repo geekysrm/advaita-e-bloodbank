@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Divider, Checkbox, Button, AutoComplete, DatePicker, Alert, Modal, InputNumber } from 'antd';
-import moment from 'moment';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 const FormItem = Form.Item;
@@ -162,8 +161,8 @@ class BloodDonorForm extends React.Component {
 
     onChange = (value) => {
         console.log('changed', value);
-        
-        
+
+
     }
 
 
@@ -178,8 +177,8 @@ class BloodDonorForm extends React.Component {
         let alertSpan = null;
         let copiedSpan = null;
         let copiedSpan1 = null;
-      
-        
+
+
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
@@ -206,7 +205,7 @@ class BloodDonorForm extends React.Component {
         const config = {
             rules: [{ type: 'object', required: true, message: 'Please select date!' }],
         };
-        
+
         return (
             <div>
                     <h1 style={{ marginTop: "10px", textAlign: "center" }}>Register as a Donor</h1>
@@ -221,7 +220,7 @@ class BloodDonorForm extends React.Component {
                             label={(
                                 <span>
                                     Full Name&nbsp;
-             
+
                                 </span>
                             )}
                         >
@@ -261,7 +260,7 @@ class BloodDonorForm extends React.Component {
                                 <InputNumber defaultValue={18} onChange={this.onChange} />   )}
                     </FormItem>
 
-                            
+
 
                     <FormItem
                         {...formItemLayout}
@@ -277,9 +276,9 @@ class BloodDonorForm extends React.Component {
                         })(
                             <Input />
                             )}
-                    </FormItem> 
-                       
-                       
+                    </FormItem>
+
+
                     <FormItem
                         {...formItemLayout}
                         label="Blood Group"
@@ -299,13 +298,13 @@ class BloodDonorForm extends React.Component {
                         </Button>
                         </FormItem>
 
-                        
-                    </Form>
-                    
-                </div>
-          
 
-          
+                    </Form>
+
+                </div>
+
+
+
         );
     }
 }
