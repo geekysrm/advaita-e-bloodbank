@@ -79,7 +79,7 @@ app.post('/get-donors',function(req,res){
         }
         else
         {
-          res.send(200).send(result.rows)
+          res.status(200).send(result.rows);
         }
       }
     });
@@ -103,7 +103,7 @@ app.post('/get-donors',function(req,res){
       }
       else
       {
-        res.send(200).send(result.rows)
+        res.status(200).send(result.rows);
       }
     }
   });
@@ -125,7 +125,7 @@ app.post('/get-donors',function(req,res){
       }
       else
       {
-        res.send(200).send(result.rows)
+        res.status(200).send(result.rows);
       }
     }
   });
@@ -145,7 +145,7 @@ app.post('/get-donors',function(req,res){
       }
       else
       {
-        res.send(200).send(result.rows)
+        res.status(200).send(result.rows);
       }
     }
   });
@@ -167,7 +167,7 @@ app.post('/get-donors',function(req,res){
       }
       else
       {
-        res.send(200).send(result.rows)
+        res.status(200).send(result.rows);
       }
     }
   });
@@ -189,7 +189,7 @@ app.post('/get-donors',function(req,res){
       }
       else
       {
-        res.send(200).send(result.rows)
+        res.status(200).send(result.rows);
       }
     }
   });
@@ -210,7 +210,7 @@ app.post('/get-donors',function(req,res){
       }
       else
       {
-        res.send(200).send(result.rows)
+        res.status(200).send(result.rows);
       }
     }
   });
@@ -234,7 +234,7 @@ app.post('/get-donors',function(req,res){
       }
       else
       {
-        res.send(200).send(result.rows)
+        res.status(200).send(result.rows);
       }
     }
   });
