@@ -11,7 +11,7 @@ class AppRouter extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Welcome}/>
-    
+            
 
             <Route component={NotFoundPage} />
           </Switch>

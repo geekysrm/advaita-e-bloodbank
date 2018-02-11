@@ -28,7 +28,7 @@ class Welcome extends Component
             <button>Show Donors</button>
           </div>
           <div className="split right">
-            <h1 style={styles.heading}>I want to donate blood</h1>
+            <h1 style={styles.heading}>I want to <br /> donate blood</h1>
             <button>Get Started</button>
           </div>
         </div>
