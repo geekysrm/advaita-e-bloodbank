@@ -33,7 +33,7 @@ app.get('/',function(req,res){
 app.post('/add-donor',function(req,res){
 
   var nm = req.body.name;
-  var age1 = req.body.age;
+  var age1 = Number(req.body.age);
   var location = req.body.place;
   var gen = req.body.gender;
   var blood_grp = req.body.blood_group;
@@ -56,7 +56,185 @@ app.post('/get-donors',function(req,res){
 
   var blood_grp = req.body.blood_group;
 
-
+  if(blood_grp === 'A+')
+  {
+      pool.query(`SELECT * FROM "donors"
+      WHERE blood_group = "A+"
+      AND blood_group = "A-"
+      AND blood_group = "O+"
+      AND blood_group = "O-";`,function(err,result){
+      if(err)
+      {
+        res.status(500).send(err.toString());
+      }
+      else
+      {
+        if(result.rows.length === 0)
+        {
+          res.status(403).send("No donors found");
+        }
+        else
+        {
+          res.send(200).send(result.rows)
+        }
+      }
+    });
+  }
+  else if(blood_grp === 'B+')
+  {
+    pool.query(`SELECT * FROM "donors"
+    WHERE blood_group = "B+"
+    AND blood_group = "B-"
+    AND blood_group = "O+"
+    AND blood_group = "O-";`,function(err,result){
+    if(err)
+    {
+      res.status(500).send(err.toString());
+    }
+    else
+    {
+      if(result.rows.length === 0)
+      {
+        res.status(403).send("No donors found");
+      }
+      else
+      {
+        res.send(200).send(result.rows)
+      }
+    }
+  });
+  }
+  else if(blood_grp === 'O+')
+  {
+    pool.query(`SELECT * FROM "donors"
+    WHERE blood_group = "O+"
+    AND blood_group = "O-";`,function(err,result){
+    if(err)
+    {
+      res.status(500).send(err.toString());
+    }
+    else
+    {
+      if(result.rows.length === 0)
+      {
+        res.status(403).send("No donors found");
+      }
+      else
+      {
+        res.send(200).send(result.rows)
+      }
+    }
+  });
+  }
+  else if(blood_grp === 'AB+')
+  {
+    pool.query(`SELECT * FROM "donors";`,function(err,result){
+    if(err)
+    {
+      res.status(500).send(err.toString());
+    }
+    else
+    {
+      if(result.rows.length === 0)
+      {
+        res.status(403).send("No donors found");
+      }
+      else
+      {
+        res.send(200).send(result.rows)
+      }
+    }
+  });
+  }
+  else if(blood_grp === 'A-')
+  {
+    pool.query(`SELECT * FROM "donors"
+    WHERE blood_group = "A-"
+    AND blood_group = "O-"`,function(err,result){
+    if(err)
+    {
+      res.status(500).send(err.toString());
+    }
+    else
+    {
+      if(result.rows.length === 0)
+      {
+        res.status(403).send("No donors found");
+      }
+      else
+      {
+        res.send(200).send(result.rows)
+      }
+    }
+  });
+  }
+  else if(blood_grp === 'B-')
+  {
+    pool.query(`SELECT * FROM "donors"
+    WHERE blood_group = "B-"
+    AND blood_group = "O-"`,function(err,result){
+    if(err)
+    {
+      res.status(500).send(err.toString());
+    }
+    else
+    {
+      if(result.rows.length === 0)
+      {
+        res.status(403).send("No donors found");
+      }
+      else
+      {
+        res.send(200).send(result.rows)
+      }
+    }
+  });
+  }
+  else if(blood_grp === 'O-')
+  {
+    pool.query(`SELECT * FROM "donors"
+    WHERE blood_group = "O-"`,function(err,result){
+    if(err)
+    {
+      res.status(500).send(err.toString());
+    }
+    else
+    {
+      if(result.rows.length === 0)
+      {
+        res.status(403).send("No donors found");
+      }
+      else
+      {
+        res.send(200).send(result.rows)
+      }
+    }
+  });
+  }
+  else if(blood_grp === 'AB-')
+  {
+    pool.query(`SELECT * FROM "donors"
+    WHERE blood_group = "AB-"
+    AND blood_group = "A-"
+    AND blood_group = "B-"
+    AND blood_group = "O-";`,function(err,result){
+    if(err)
+    {
+      res.status(500).send(err.toString());
+    }
+    else
+    {
+      if(result.rows.length === 0)
+      {
+        res.status(403).send("No donors found");
+      }
+      else
+      {
+        res.send(200).send(result.rows)
+      }
+    }
+  });
+  }
 
 });
 
