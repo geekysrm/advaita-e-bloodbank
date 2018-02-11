@@ -12,8 +12,8 @@ var Pool = require('pg').Pool;
 var config = {
   host: 'localhost',
   user: 'danglingpointers',
-  password: 'srm52sai24',
-  database: 'attendancemanager'
+  password: '***',
+  database: 'blood_donors'
 };
 
 var pool = new Pool(config);
@@ -30,7 +30,7 @@ app.get('/',function(req,res){
   res.send('Welcome to new app!');
 });
 
-app.post('/add-doner',function(req,res){
+app.post('/add-donor',function(req,res){
 
   var nm = req.body.name;
   var age1 = req.body.age;
@@ -38,7 +38,7 @@ app.post('/add-doner',function(req,res){
   var gen = req.body.gender;
   var blood_grp = req.body.blood_group;
 
-  pool.query(`INSERT INTO "doners" ("name", "age", "place", "gender", "blood_group")
+  pool.query(`INSERT INTO "donors" ("name", "age", "place", "gender", "blood_group")
               VALUES ($1, $2, $3, $4, $5);`,[nm,age1,location,gen,blood_grp],function(err,result){
     if(err)
     {
@@ -52,11 +52,11 @@ app.post('/add-doner',function(req,res){
 
 });
 
-app.post('/get-doners',function(req,res){
+app.post('/get-donors',function(req,res){
 
   var blood_grp = req.body.blood_group;
 
-  
+
 
 });
 
