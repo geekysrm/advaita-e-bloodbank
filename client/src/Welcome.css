@@ -1,9 +1,81 @@
-.ant-carousel .slick-slide {
-  text-align: center;
-  height: 300px;
-  line-height: 300px;
+:root {
+  /*initialize variables as will be used on the left side, standard state*/
+  --bg-color: rgba(223, 39, 39, 0.7);
+  --bg-url: url('https://image.ibb.co/m56Czw/designer.jpg');
+  --button-hover-color: rgba(161, 11, 11, 0.3);
 }
 
-.ant-carousel .slick-slide h3 {
-  color: #fff;
+html, body {
+  padding:0;
+  margin:0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 100%;
+  height: 100%;
 }
+
+h1 {
+  font-size: 2rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+button {
+  text-transform:uppercase;
+  padding:1em 2em;
+  font-size:1rem;
+  font-weight:bold;
+  background:transparent;
+  color:#FFF; 
+  border: 0.2rem #FFF solid;
+}
+
+button:hover{
+  /*sets the hover status of the buttons to a variable value*/
+  background-color: var(--button-hover-color);
+  border-color: var(--button-hover-color); 
+  cursor:pointer;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  oveflow:hidden;
+}
+
+.split {
+  transition:all 1s ease;
+  flex:1 1 auto;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items:center;
+  /*sets the background image and color mask, defaulted to the values corresponding to the left*/
+  background: 
+    linear-gradient(var(--bg-color),var(--bg-color)) repeat-x top / 100% 100%,
+    var(--bg-url) center center no-repeat / cover;
+}
+
+.left { /*NO ADITIONAL STYLES NEEDED*/}
+
+.right {
+  /*ONLY CHANGE THE VARIABLE VALUES, and they'll apply to the correct children! :D*/
+  --bg-color: rgba(43, 43, 43, 0.8);
+  --bg-url:url('https://image.ibb.co/m3ZbRb/programmer.png');
+  --button-hover-color: rgba(92, 92, 92, 0.3);
+}
+
+.split:hover{
+  /*grows an element on hover*/
+  flex-grow:10;
+}
+
+
+@media(max-width:500px){
+  /*switch flex direction for smaller screens*/
+  .container{
+    flex-direction:column;   
+  }
+}
+
+/*TO-DO: adjust header sizes*/
