@@ -1,17 +1,25 @@
-const express = require('express');
+var express = require('express');
+var app = express();
+var router = express.Router();
+var path = require('path');
 
-const app = express();
+var crypto = require('crypto');
 
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
+var XMLHttpRequest = require('xhr2');
 
-  res.json(customers);
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+   extended: false
+}));
+
+
+
+app.get('/',function(req,res){
+  res.send('Welcome!');
 });
 
-const port = 5000;
-
-app.listen(port, () => `Server running on port ${port}`);
+app.listen(5000, function () {
+  console.log('Example app listening on port 5000!');
+});
