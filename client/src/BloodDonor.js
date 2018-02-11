@@ -103,7 +103,7 @@ class BloodDonorForm extends React.Component {
                     console.log(values.name);
                     console.log(values.place);
                     console.log(values.gender[0]);
-
+                    
 
 
 

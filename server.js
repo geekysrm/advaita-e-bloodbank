@@ -11,9 +11,9 @@ var Pool = require('pg').Pool;
 
 var config = {
   host: 'localhost',
-  user: 'danglingpointers',
-  password: '***',
-  database: 'blood_donors'
+  user: 'admin',
+  password: 'blood_password',
+  database: 'blood_donor'
 };
 
 var pool = new Pool(config);
@@ -33,7 +33,7 @@ app.get('/',function(req,res){
 app.post('/add-donor',function(req,res){
 
   var nm = req.body.name;
-  var age1 = Number(req.body.age);
+  var age1 = req.body.age;
   var location = req.body.place;
   var gen = req.body.gender;
   var blood_grp = req.body.blood_group;
