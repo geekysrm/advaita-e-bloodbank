@@ -12,13 +12,13 @@
   height: 100vh;
 }
 
-h1 {
+.h1 {
   font-size: 2rem;
   color: #fff;
   white-space: nowrap;
 }
 
-button {
+.button {
   text-transform:uppercase;
   padding:1em 2em;
   font-size:1rem;
@@ -28,7 +28,7 @@ button {
   border: 0.2rem #FFF solid;
 }
 
-button:hover{
+.button:hover{
   background-color: var(--button-hover-color);
   border-color: var(--button-hover-color);
   cursor:pointer;
