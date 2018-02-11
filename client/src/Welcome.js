@@ -22,16 +22,16 @@ class Welcome extends Component
   {
     return(
       <div>
-            <div className="container">
-                <div className="split left">
-                    <h1>The Designer</h1>
-                    <a href="#" className="button">Read More</a>
-                </div>
-                <div className="split right">
-                    <h1>The Programmer</h1>
-                    <a href="#" className="button">Read More</a>
-                </div>
-            </div>
+        <div className="container">
+          <div className="split left">
+            <h1>The Designer</h1>
+            <button>Read More</button>
+          </div>
+          <div className="split right">
+            <h1>The Programmer</h1>
+            <button>Read More</button>
+          </div>
+        </div>
       </div>
     );
   }
