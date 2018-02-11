@@ -111,7 +111,10 @@ class BloodDonorForm extends React.Component {
                     })
                         .then(response => {
                             console.log(response.data);
-                            
+                            Modal.success({
+                                title: 'Thank you for registering as a donor!',
+                                content: 'Your contribution will save many lives!',
+                            });
                         })
                         .catch(error => {
                             console.log('Post request to add donor failed!');
