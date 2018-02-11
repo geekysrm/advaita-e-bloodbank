@@ -26,8 +26,12 @@ app.use(bodyParser.urlencoded({
    extended: false
 }));
 
-app.get('/',function(req,res){
-  res.send('Welcome to new app!');
+// Serve static assets
+app.use(express.static(path.resolve(__dirname, 'client/build')));
+
+// Always return the main index.html, so react-router render the route in the client
+app.get('*',function(req,res){
+  res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
 });
 
 app.post('/add-donor',function(req,res){
