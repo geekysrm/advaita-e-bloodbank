@@ -14,22 +14,22 @@ class Welcome extends Component
   }
 
   componentWillMount() {
-   
+
 
   }
 
   render()
   {
     return(
-      <div>
+      <div className="body">
         <div className="container">
           <div className="split left">
-            <h1>The Designer</h1>
-            <button>Read More</button>
+            <h1 style={styles.heading}>I need blood</h1>
+            <button>Show Donors</button>
           </div>
           <div className="split right">
-            <h1>The Programmer</h1>
-            <button>Read More</button>
+            <h1 style={styles.heading}>I want to donate blood</h1>
+            <button>Get Started</button>
           </div>
         </div>
       </div>
@@ -37,7 +37,11 @@ class Welcome extends Component
   }
 }
 
+const styles={
+  heading:{
+    fontSize:50,
+  }
+}
+
 
 export default Welcome;
-
-

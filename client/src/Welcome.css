@@ -5,12 +5,12 @@
   --button-hover-color: rgba(161, 11, 11, 0.3);
 }
 
-html, body {
+.body{
   padding:0;
   margin:0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 h1 {
@@ -25,14 +25,14 @@ button {
   font-size:1rem;
   font-weight:bold;
   background:transparent;
-  color:#FFF; 
+  color:#FFF;
   border: 0.2rem #FFF solid;
 }
 
 button:hover{
   /*sets the hover status of the buttons to a variable value*/
   background-color: var(--button-hover-color);
-  border-color: var(--button-hover-color); 
+  border-color: var(--button-hover-color);
   cursor:pointer;
 }
 
@@ -51,7 +51,7 @@ button:hover{
   justify-content:space-around;
   align-items:center;
   /*sets the background image and color mask, defaulted to the values corresponding to the left*/
-  background: 
+  background:
     linear-gradient(var(--bg-color),var(--bg-color)) repeat-x top / 100% 100%,
     var(--bg-url) center center no-repeat / cover;
 }
@@ -74,7 +74,7 @@ button:hover{
 @media(max-width:500px){
   /*switch flex direction for smaller screens*/
   .container{
-    flex-direction:column;   
+    flex-direction:column;
   }
 }
 
