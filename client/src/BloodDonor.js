@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Divider, Checkbox, Button, AutoComplete, DatePicker, Alert, Modal } from 'antd';
+import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Divider, Checkbox, Button, AutoComplete, DatePicker, Alert, Modal, InputNumber } from 'antd';
 import moment from 'moment';
 import axios from 'axios';
 import 'antd/dist/antd.css';
@@ -22,6 +22,42 @@ const gender = [{
     label: 'Others',
 
 }];
+
+const bloodgrp = [{
+    value: 'O+',
+    label: 'O+',
+
+}, {
+    value: 'A+',
+    label: 'A+',
+
+},
+{
+    value: 'B+',
+    label: 'B+',
+
+},
+{
+    value: 'AB+',
+    label: 'AB+',
+
+}, {
+    value: 'O-',
+    label: 'O-',
+
+}, {
+    value: 'A-',
+    label: 'A-',
+
+}, {
+    value: 'B-',
+    label: 'B-',
+
+}, {
+    value: 'AB-',
+    label: 'AB-',
+
+    }];
 
 // Name, Age, Gender, Place, Bloodgrp
 
@@ -60,7 +96,27 @@ class BloodDonorForm extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-             
+                if(values.age >=18 && values.age<=60)
+                {
+                    console.log(values.bloodgroup[0]);
+                    console.log(values.age[0]);
+                    console.log(values.name);
+                    console.log(values.place);
+                    console.log(values.gender[0]);
+
+
+
+
+
+                }
+
+                else {
+                    Modal.error({
+                        title: 'Please enter correct age!',
+                        content: 'You must be above 18 years and below 60 years to donate blood!',
+                    });
+                }
+
 
             }
         });
@@ -87,6 +143,12 @@ class BloodDonorForm extends React.Component {
     onCopy = () => {
         this.setState({ copied: true });
     };
+
+    onChange = (value) => {
+        console.log('changed', value);
+        
+        
+    }
 
 
     render() {
@@ -131,7 +193,7 @@ class BloodDonorForm extends React.Component {
         
         return (
             <div>
-                    <h1 style={{ marginTop: "10px", textAlign: "center" }}>Register To Get Credentials</h1>
+                    <h1 style={{ marginTop: "10px", textAlign: "center" }}>Register as a Donor</h1>
                     <Divider />
                     <Form onSubmit={this.handleSubmit} style={{
                         marginRight: "20%",
@@ -143,9 +205,7 @@ class BloodDonorForm extends React.Component {
                             label={(
                                 <span>
                                     Full Name&nbsp;
-              <Tooltip title="Please enter the same name as in your Voter ID Card.">
-                                        <Icon type="question-circle-o" />
-                                    </Tooltip>
+             
                                 </span>
                             )}
                         >
@@ -155,6 +215,7 @@ class BloodDonorForm extends React.Component {
                                 <Input />
                                 )}
                         </FormItem>
+
                         <FormItem
                             {...formItemLayout}
                             label="Gender"
@@ -168,79 +229,63 @@ class BloodDonorForm extends React.Component {
                         </FormItem>
 
 
-                        <FormItem
-                            {...formItemLayout}
-                            label={(
-                                <span>
-                                    Date of Birth&nbsp;
-              <Tooltip title="Please enter your DOB as in your Voter ID Card.">
-                                        <Icon type="question-circle-o" />
-                                    </Tooltip>
-                                </span>
-                            )}
-                        >
-                            {getFieldDecorator('date', config)(
-                                <DatePicker />
-                            )}
-                        </FormItem>
+                    <FormItem
+                        {...formItemLayout}
+                        label={(
+                            <span>
+                                Age&nbsp;
 
-                        
-                        <FormItem
-                            {...formItemLayout}
-                            label={(
-                                <span>
-                                    Voter ID Number&nbsp;
-              <Tooltip title="Please enter the Voter ID Number as in your Voter ID Card.">
-                                        <Icon type="question-circle-o" />
-                                    </Tooltip>
                                 </span>
-                            )}
-                        >
-                            {getFieldDecorator('voterId', {
-                                rules: [{ required: true, message: 'Please input your voter ID Number!' }, { pattern: '^[A-Z]{3}[0-9]{7}$', message: 'Please input valid voter ID Number!' }],
-                            })(
-                                <Input style={{ width: '100%' }} />
-                                )}
-                        </FormItem>
-                        <FormItem
-                            {...formItemLayout}
-                            label="E-mail"
-                        >
-                            {getFieldDecorator('email', {
-                                rules: [{
-                                    type: 'email', message: 'The e-mail entered is not valid!',
-                                }, {
-                                    required: true, message: 'Please input your E-mail!',
-                                }],
-                            })(
-                                <Input />
-                                )}
-                        </FormItem>
+                        )}
+                    >
+                        {getFieldDecorator('age', {
+                            initialValue: [18],
+                            rules: [{ required: true }],
+                        })(
+                                <InputNumber defaultValue={18} onChange={this.onChange} />   )}
+                    </FormItem>
 
-                        <FormItem
-                            {...formItemLayout}
-                            label="Phone Number"
-                        >
-                            {getFieldDecorator('phone', {
-                                rules: [{ required: true, message: 'Please input your phone number!' }, { pattern: '^((\\+91-?)|0)?[0-9]{10}$', message: 'Please input a valid phone number!' }],
-                            })(
-                                <Input addonBefore="+91" style={{ width: '100%' }} />
-                                )}
-                        </FormItem>
+                            
+
+                    <FormItem
+                        {...formItemLayout}
+                        label={(
+                            <span>
+                                Place&nbsp;
+
+                                </span>
+                        )}
+                    >
+                        {getFieldDecorator('place', {
+                            rules: [{ required: true, message: 'Please input your place of residence!', whitespace: true }],
+                        })(
+                            <Input />
+                            )}
+                    </FormItem> 
+                       
+                       
+                    <FormItem
+                        {...formItemLayout}
+                        label="Blood Group"
+                    >
+                        {getFieldDecorator('bloodgroup', {
+                            initialValue: ['O+'],
+                            rules: [{ type: 'array', required: true, message: 'Please select your blood group!' }]
+                        })(
+                            <Cascader options={bloodgrp} key={bloodgrp} />
+                            )}
+                    </FormItem>
+
+
                         <FormItem {...tailFormItemLayout}>
                             <Button type="primary" htmlType="submit" disabled={this.state.isDisabled} loading={this.state.loading}>
-                                Get Voting Credentials
+                                Register
                         </Button>
                         </FormItem>
 
                         
                     </Form>
-                    <div style={styles.msg}>
-                        <div style={{ width: '50%' }}>
-                            {alertSpan}
-                            {copiedSpan}
-                        </div>
-                    </div>
+                    
                 </div>
           
 
