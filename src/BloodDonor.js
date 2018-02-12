@@ -119,7 +119,7 @@ class BloodDonorForm extends React.Component {
                     axios({
                         method: 'post',
                         url: '/add-donor',
-                        data: { name: values.name, age: values.age, place: values.place, gender: values.gender[0], blood_group: values.bloodgroup[0], phone: Number(values.phone), latitude:this.state.latitude, longitude:this.state.latitude },
+                        data: { name: values.name, age: Number(values.age), place: values.place, gender: values.gender[0], blood_group: values.bloodgroup[0], phone: Number(values.phone), latitude:this.state.latitude, longitude:this.state.longitude },
                         config: { headers: { 'Content-Type': 'application/json' } }
                     })
                         .then(response => {

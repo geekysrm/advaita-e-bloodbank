@@ -27,7 +27,7 @@ class Welcome extends Component
         <div className="container">
           <div className="split left">
             <h1 className="h1" style={styles.heading}>I need blood</h1>
-            <NavLink className="button" to="/accept">Show Donors</NavLink>
+            <NavLink className="button" to="/map">Show Donors</NavLink>
           </div>
           <div className="split right">
             <h1 className="h1" style={styles.heading}>I want to <br /> donate blood</h1>

@@ -116,7 +116,7 @@ render() {
 
   </div>
 
-  {this.state.donors.map(function (donor) {
+  {this.state.donors.map( (donor)=> {
 
       return (
         <Map google={this.props.google} zoom={5}
@@ -130,8 +130,8 @@ render() {
                   name={'Current location'} />
 
           <Marker
-          title={'The marker`s title will appear as a tooltip.'}
-              name={'Dolores park'}
+          title={donor.name}
+              name={donor.name}
               position={{lat: donor.latitude,
               lng: donor.longitude}} />
 
