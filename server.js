@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var path = require('path');
+var morgan = require('morgan');
 
 var crypto = require('crypto');
 
@@ -20,6 +21,8 @@ var config = {
 var pool = new Pool(config);
 
 var XMLHttpRequest = require('xhr2');
+
+app.use(morgan('combined'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
