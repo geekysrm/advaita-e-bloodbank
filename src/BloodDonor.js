@@ -66,13 +66,7 @@ class BloodDonorForm extends React.Component {
         super(props);
         this.state = {
             confirmDirty: false,
-            autoCompleteResult: [],
-            credentialsThere: '',
-            loading: false,
-            isDisabled: false,
-            copied: false,
-            flag: -1,
-            details: []
+            autoCompleteResult: []
         };
 
     }
@@ -102,11 +96,12 @@ class BloodDonorForm extends React.Component {
                     console.log(values.age);
                     console.log(values.name);
                     console.log(values.place);
+                    console.log(values.phone);
                     console.log(values.gender[0]);
                     axios({
                         method: 'post',
                         url: '/add-donor',
-                        data: { name: values.name, age: values.age, place: values.place, gender: values.gender[0], blood_group: values.bloodgroup[0]  },
+                        data: { name: values.name, age: values.age, place: values.place, gender: values.gender[0], blood_group: values.bloodgroup[0], phone: Number(values.phone) },
                         config: { headers: { 'Content-Type': 'application/json' } }
                     })
                         .then(response => {
@@ -282,6 +277,16 @@ class BloodDonorForm extends React.Component {
                             )}
                     </FormItem>
 
+                    <FormItem
+                        {...formItemLayout}
+                        label="Phone Number"
+                    >
+                        {getFieldDecorator('phone', {
+                            rules: [{ required: true, message: 'Please input your phone number!' }, { pattern: '^((\\+91-?)|0)?[0-9]{10}$', message: 'Please input a valid phone number!' }],
+                        })(
+                            <Input addonBefore="+91" style={{ width: '100%' }} />
+                            )}
+                    </FormItem>
 
                     <FormItem
                         {...formItemLayout}
