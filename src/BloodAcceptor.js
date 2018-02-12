@@ -97,6 +97,8 @@ class BloodAcceptor extends Component {
                                             <p>Age: {donor.age}</p>
                                             <p>Place: {donor.place}</p>
                                             <p>Blood Group: {donor.blood_group}</p>
+                                            <p>Phone Number: {donor.phone_no}</p>
+
 
                                         </Card>
                                         <br />
