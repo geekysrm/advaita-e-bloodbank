@@ -210,8 +210,8 @@ class BloodDonorForm extends React.Component {
 
         return (
             <div>
-                <div style={{ backgroundColor: 'red', marginTop:-10}}>
-                    <h1 style={{ marginTop: "10px", textAlign: "center",  }}>Register as a Donor</h1>
+                <div>
+                    <h1 style={{ marginTop: "10px", textAlign: "center" }}>Register as a Donor</h1>
                     <Divider />
                     </div>
                     <Form onSubmit={this.handleSubmit} style={{

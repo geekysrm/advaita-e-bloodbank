@@ -8,6 +8,7 @@ var crypto = require('crypto');
 //for database
 var Pool = require('pg').Pool;
 
+//google maps API key =  AIzaSyBUdtb7Ht29C-NxCNhGHjZ7r6qaxV1Twjw 
 
 var config = {
   host: 'localhost',

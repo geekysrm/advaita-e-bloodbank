@@ -54,7 +54,7 @@ class BloodAcceptor extends Component {
 
     componentWillMount()
     {
-      
+
     }
 
     onEnterBloodGroup = (value) => {
@@ -106,11 +106,13 @@ class BloodAcceptor extends Component {
                             })}
                         </div>
                     </div>
-                </div>) : 
+                </div>) :
             (
                 <div>
-                <h1>Enter your blood Group </h1>
+                <h1 style={{ marginTop: "10px", textAlign: "center" }}>Enter your blood Group </h1>
+                <div style={{ marginLeft:'15%' , marginRight:'15%'}} >
                   <Search placeholder="Enter your Blood Group" enterButton="Submit" onSearch={value => this.onEnterBloodGroup(value)} />
+                </div>
                 </div>
             )}
 
