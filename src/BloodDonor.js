@@ -66,15 +66,31 @@ class BloodDonorForm extends React.Component {
         super(props);
         this.state = {
             confirmDirty: false,
-            autoCompleteResult: []
+            autoCompleteResult: [],
+            latitude:0,
+            longitude:0
         };
 
+    }
+
+    getLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.showPosition);
+        }
+    }
+
+    showPosition = (position) => {
+      this.setState({
+        latitude:position.coords.latitude,
+        longitude:position.coords.longitude
+      });
     }
 
     handleOnLoad = () => {
             }
 
     componentWillMount() {
+        this.getLocation();
         window.addEventListener('load', this.handleOnLoad);
     }
     componentDidUpdate() {
@@ -92,6 +108,8 @@ class BloodDonorForm extends React.Component {
                 console.log(values);
                 if(values.age >=18 && values.age<=60)
                 {
+                    console.log(this.state.latitude);
+                    console.log(this.state.longitude);
                     console.log(values.bloodgroup[0]);
                     console.log(values.age);
                     console.log(values.name);
@@ -101,7 +119,7 @@ class BloodDonorForm extends React.Component {
                     axios({
                         method: 'post',
                         url: '/add-donor',
-                        data: { name: values.name, age: values.age, place: values.place, gender: values.gender[0], blood_group: values.bloodgroup[0], phone: Number(values.phone) },
+                        data: { name: values.name, age: values.age, place: values.place, gender: values.gender[0], blood_group: values.bloodgroup[0], phone: Number(values.phone), latitude:this.state.latitude, longitude:this.state.latitude },
                         config: { headers: { 'Content-Type': 'application/json' } }
                     })
                         .then(response => {
