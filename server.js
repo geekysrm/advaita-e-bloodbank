@@ -8,7 +8,7 @@ var crypto = require('crypto');
 //for database
 var Pool = require('pg').Pool;
 
-//google maps API key =  AIzaSyBUdtb7Ht29C-NxCNhGHjZ7r6qaxV1Twjw 
+//google maps API key =  AIzaSyBUdtb7Ht29C-NxCNhGHjZ7r6qaxV1Twjw
 
 var config = {
   host: 'localhost',
@@ -42,9 +42,10 @@ app.post('/add-donor',function(req,res){
   var location = req.body.place;
   var gen = req.body.gender;
   var blood_grp = req.body.blood_group;
+  var mobile = req.body.phone;
 
-  pool.query(`INSERT INTO "donors" ("name", "age", "place", "gender", "blood_group")
-              VALUES ($1, $2, $3, $4, $5);`,[nm,age1,location,gen,blood_grp],function(err,result){
+  pool.query(`INSERT INTO "donors" ("name", "age", "place", "gender", "blood_group", "phone_no")
+              VALUES ($1, $2, $3, $4, $5, $6);`,[nm,age1,location,gen,blood_grp,mobile],function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());
@@ -64,10 +65,10 @@ app.post('/get-donors',function(req,res){
   if(blood_grp === 'A+')
   {
       pool.query(`SELECT * FROM "donors"
-      WHERE blood_group = "A+"
-      AND blood_group = "A-"
-      AND blood_group = "O+"
-      AND blood_group = "O-";`,function(err,result){
+      WHERE blood_group = 'A+'
+      OR blood_group = 'A-'
+      OR blood_group = 'O+'
+      OR blood_group = 'O-';`,function(err,result){
       if(err)
       {
         res.status(500).send(err.toString());
@@ -88,10 +89,10 @@ app.post('/get-donors',function(req,res){
   else if(blood_grp === 'B+')
   {
     pool.query(`SELECT * FROM "donors"
-    WHERE blood_group = "B+"
-    AND blood_group = "B-"
-    AND blood_group = "O+"
-    AND blood_group = "O-";`,function(err,result){
+    WHERE blood_group = 'B+'
+    OR blood_group = 'B-'
+    OR blood_group = 'O+'
+    OR blood_group = 'O-';`,function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());
@@ -112,8 +113,8 @@ app.post('/get-donors',function(req,res){
   else if(blood_grp === 'O+')
   {
     pool.query(`SELECT * FROM "donors"
-    WHERE blood_group = "O+"
-    AND blood_group = "O-";`,function(err,result){
+    WHERE blood_group = 'O+'
+    OR blood_group = 'O-';`,function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());
@@ -154,8 +155,8 @@ app.post('/get-donors',function(req,res){
   else if(blood_grp === 'A-')
   {
     pool.query(`SELECT * FROM "donors"
-    WHERE blood_group = "A-"
-    AND blood_group = "O-"`,function(err,result){
+    WHERE blood_group = 'A-'
+    OR blood_group = 'O-'`,function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());
@@ -176,8 +177,8 @@ app.post('/get-donors',function(req,res){
   else if(blood_grp === 'B-')
   {
     pool.query(`SELECT * FROM "donors"
-    WHERE blood_group = "B-"
-    AND blood_group = "O-"`,function(err,result){
+    WHERE blood_group = 'B-'
+    OR blood_group = 'O-'`,function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());
@@ -198,7 +199,7 @@ app.post('/get-donors',function(req,res){
   else if(blood_grp === 'O-')
   {
     pool.query(`SELECT * FROM "donors"
-    WHERE blood_group = "O-"`,function(err,result){
+    WHERE blood_group = 'O-'`,function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());
@@ -219,10 +220,10 @@ app.post('/get-donors',function(req,res){
   else if(blood_grp === 'AB-')
   {
     pool.query(`SELECT * FROM "donors"
-    WHERE blood_group = "AB-"
-    AND blood_group = "A-"
-    AND blood_group = "B-"
-    AND blood_group = "O-";`,function(err,result){
+    WHERE blood_group = 'AB-'
+    OR blood_group = 'A-'
+    OR blood_group = 'B-'
+    OR blood_group = 'O-';`,function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());
