@@ -27,11 +27,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Serve static assets
-app.use(express.static(path.resolve(__dirname, 'client/build')));
+app.use(express.static(path.resolve(__dirname, 'build')));
 
 // Always return the main index.html, so react-router render the route in the client
 app.get('*',function(req,res){
-  res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
 
 app.post('/add-donor',function(req,res){
@@ -50,7 +50,7 @@ app.post('/add-donor',function(req,res){
     }
     else
     {
-      res.status(200).send("insert succesfull");
+      res.status(200).send("insert successful");
     }
   });
 
@@ -241,7 +241,7 @@ app.post('/get-donors',function(req,res){
   }
 
 });
-
-app.listen(5000, function () {
+const port = process.env.PORT || 5000;
+app.listen(port, function () {
   console.log('Example app listening on port 5000!');
 });
