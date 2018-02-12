@@ -43,9 +43,11 @@ app.post('/add-donor',function(req,res){
   var gen = req.body.gender;
   var blood_grp = req.body.blood_group;
   var mobile = req.body.phone;
+  var lat = req.body.latitude;
+  var long = req.body.longitude;
 
-  pool.query(`INSERT INTO "donors" ("name", "age", "place", "gender", "blood_group", "phone_no")
-              VALUES ($1, $2, $3, $4, $5, $6);`,[nm,age1,location,gen,blood_grp,mobile],function(err,result){
+  pool.query(`INSERT INTO "donors" ("name", "age", "place", "gender", "blood_group", "phone_no", "latitude", "longitude")
+              VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`,[nm,age1,location,gen,blood_grp,mobile,lat,long],function(err,result){
     if(err)
     {
       res.status(500).send(err.toString());

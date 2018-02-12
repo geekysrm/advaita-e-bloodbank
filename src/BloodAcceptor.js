@@ -123,8 +123,8 @@ class BloodAcceptor extends Component {
 
 const styles = {
     content: {
-        marginLeft: '30%',
-        width: '65%'
+        marginLeft: '60%',
+        width: '35%'
     },
     cardContainer: {
         display: 'flex',
